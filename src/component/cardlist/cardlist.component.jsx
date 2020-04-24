@@ -24,10 +24,6 @@ class CardList extends React.Component{
                     monster.edit = false;
                     monster.editEmail = false;
                     monster.editName = false;
-                    monster.buttonProps = {
-                        editNameButtonHidden : false,
-                        editEmailButtonHidden : false
-                    }
                     monster.textBoxProps = {
                         editNameVal : monster.name,
                         editEmailVal : monster.email
@@ -50,9 +46,6 @@ class CardList extends React.Component{
         monster.edit = true;
         monster.editName = true;
         monster.editEmail = false;
-        monster.buttonProps = {
-            editNameButtonHidden : true
-        }
         modifiedMonsters[e.target.id-1] = monster;
         //console.log(mod)
         this.setState({
@@ -72,9 +65,6 @@ class CardList extends React.Component{
         monster.edit = true;
         monster.editName = false;
         monster.editEmail = true;
-        monster.buttonProps = {
-            editEmailButtonHidden : true
-        }
         modifiedMonsters[e.target.id-1] = monster;
         //console.log(mod)
         this.setState({
@@ -85,16 +75,21 @@ class CardList extends React.Component{
     onCancelClick =(e)=>{
         e.preventDefault()
         console.log("cancel clicked")
-        var mod = this.state.monsters;
-        mod = this.resetButtonProps(mod);
+        var monsters = this.state.monsters;
+        var monster = this.state.monsters[e.target.id-1];
+        if(monster.emailError && monster.emailError.length>0){
+            monster.emailError = "";
+        }
+        monsters[e.target.id-1] = monster;
+        monsters = this.resetButtonProps(monsters);
         this.setState({
-            monsters:mod
+            monsters:monsters
         })
     }
 
     validateEmail = (email) => {
-        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        return re.test(String(email).toLowerCase());
+        var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+        return reg.test(String(email).toLowerCase());
     }
 
     resetButtonProps = (monsters,id) =>{
@@ -105,10 +100,6 @@ class CardList extends React.Component{
                     monster.edit = false;
                     monster.editName = false;
                     monster.editEmail = false;
-                    monster.buttonProps = {
-                        editNameButtonHidden : false,
-                        editEmailButtonHidden : false
-                    }
                 }
             });
         } else{
@@ -116,10 +107,6 @@ class CardList extends React.Component{
                 monster.edit = false;
                 monster.editName = false;
                 monster.editEmail = false;
-                monster.buttonProps = {
-                    editNameButtonHidden : false,
-                    editEmailButtonHidden : false
-                }
             });
         }
         return monsters;
@@ -130,16 +117,13 @@ class CardList extends React.Component{
         console.log("submit name clicked");
         var monster = this.state.monsters[e.target.id-1];
         monster.name = monster.textBoxProps.editNameVal;
-        monster.buttonProps = {
-            editNameButtonHidden : false
-        }
         monster.edit = false;
         monster.editName = false;
         monster.editEmail = false;
-        var mod = this.state.monsters;
+        var monsters = this.state.monsters;
         //console.log(mod)
         this.setState({
-            monsters : mod
+            monsters : monsters
         })
     }
 
@@ -147,18 +131,14 @@ class CardList extends React.Component{
         e.preventDefault();
         console.log("submit email clicked")
         var monster = this.state.monsters[e.target.id-1];
-
-         if(!this.validateEmail()){
+         if(this.validateEmail(monster.textBoxProps.editEmailVal)==false){
              console.log("enter a valid email")
-            monster.emailError = "Enter a Valid Email" 
+             monster.emailError = "Enter a Valid Email" 
         } else { 
             monster.email = monster.textBoxProps.editEmailVal;
             monster.edit = false;
             monster.editName = false;
             monster.editEmail = false;
-            monster.buttonProps = {
-                editEmailButtonHidden : false
-            }
         }
         var monsters = this.state.monsters;
         //console.log(mod)
@@ -220,16 +200,3 @@ class CardList extends React.Component{
 }
 
 export default CardList
-
-/* export const CardList = (props) => {
-    //console.log(props)
-    return(
-        <div className="row" >
-            {props.monsters.map(monster => (
-                <div className="four columns" style={{marginLeft:0}}>
-                    <Card key={monster.id} monster={monster}/>
-                </div>
-            ))}
-        </div>
-    )
-} */

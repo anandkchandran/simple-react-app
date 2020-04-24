@@ -5,3 +5,7 @@
 .editBox{
     margin-bottom: 10px;
 }
+
+.error{
+    border-color: darkorange !important;
+}

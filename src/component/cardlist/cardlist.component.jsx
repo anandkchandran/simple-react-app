@@ -76,10 +76,12 @@ class CardList extends React.Component{
         e.preventDefault()
         console.log("cancel clicked")
         var monsters = this.state.monsters;
-        var monster = this.state.monsters[e.target.id-1];
+        var monster = monsters[e.target.id-1];
         if(monster.emailError && monster.emailError.length>0){
             monster.emailError = "";
         }
+        monster.textBoxProps.editNameVal = monster.name;
+        monster.textBoxProps.editEmailVal = monster.email;
         monsters[e.target.id-1] = monster;
         monsters = this.resetButtonProps(monsters);
         this.setState({

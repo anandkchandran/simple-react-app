@@ -1,6 +1,20 @@
-.centertext{
-    text-align: center !important;
+
+@media (min-width: 320px) {
+    .centertext{
+        text-align: center !important
+    }
 }
+@media (min-width: 550px) {
+    .centertext{
+        text-align: justify
+    }
+}
+
+@media (min-width: 770px) {
+    .centertext{
+        text-align: center
+    }
+} 
 
 .editBox{
     margin-bottom: 10px;

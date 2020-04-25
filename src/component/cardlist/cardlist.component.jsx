@@ -186,11 +186,11 @@ class CardList extends React.Component{
     }
 
 
-    render(){
+    render(){    
         return(
             <div className="row" >
                 {this.state.monsters.map(monster => (
-                    <div key={monster.id} className="four columns" style={{marginLeft:20}}>
+                    <div key={monster.id} className={"four columns customColumn"}>
                         <Card key={monster.id} monster={monster} events={this.events}/>
                     </div>
                  ))}

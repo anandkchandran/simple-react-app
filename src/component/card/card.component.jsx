@@ -31,15 +31,9 @@ export const Card = (props) =>{
 
     return(
         <div>
-            <div className={'row'}>
                 <Avatar id={monster.id} name={monster.name} set={((monster.id*17)%13)%9}/>
-            </div>
-            <div className={'row'}>
                 <Details id={monster.id} name={monster.name} email={monster.email} editName={editName} editEmail={editEmail}/>
-            </div>
-            <div className={'row'}>
                 <Buttons id={monster.id} monster={monster} events={props.events}></Buttons>
-            </div>
         </div>
     )
 }

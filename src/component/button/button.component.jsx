@@ -3,7 +3,7 @@ import './button.style.css'
 
 export const Button = (props) =>{
     //console.dir(props.id,props.btnval,props.hidden);
-    var style = props.className+" button visible"
+    var style = props.className+" visible"
     return(
         <input id = {props.id} className={style} type={'button'} onClick={props.handleClick} value={props.btnval}/>
     )

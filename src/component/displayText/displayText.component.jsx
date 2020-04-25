@@ -21,6 +21,6 @@ export const DisplayText = (props)=>{
     }
 
     return(
-        <div>{Tag}{error}</div>
+        <div>{Tag}</div>
     );
 }

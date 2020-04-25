@@ -1,5 +1,6 @@
 import React from 'react'
 import {Button} from '../button/button.component'
+import './buttons.style.css'
 
 export const Buttons =(props)=>{
     var events = props.events;
@@ -21,9 +22,9 @@ export const Buttons =(props)=>{
 
 
     return(
-        <div>
-            <Button id = {monster.id} className={'five columns'} handleClick={btn1Event} btnval={btn1Text}/>
-            <Button id = {monster.id} className={'five columns'} handleClick={btn2Event} btnval={btn2Text}/>
+        <div className={'centerbtn'}>
+            <Button id = {monster.id} className={'button btn'} handleClick={btn1Event} btnval={btn1Text}/>
+            <Button id = {monster.id} className={'button btn secondbtn'} handleClick={btn2Event} btnval={btn2Text}/>
         </div>
     )
 }

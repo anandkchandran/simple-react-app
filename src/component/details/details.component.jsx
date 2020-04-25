@@ -13,11 +13,11 @@ export const Details =(props) => {
         nameBox="";
     }
     return(
-        <div className={'ten columns'}>
-            <div>
+        <div>
+            <div className={'row'}>
                 {nameBox}
             </div>
-            <div>
+            <div className={'row'}>
                 {emailBox}
             </div>
         </div>

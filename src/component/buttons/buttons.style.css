@@ -1,0 +1,26 @@
+@media (max-width:550px){
+    .centerbtn{
+        text-align: center !important;
+    }
+    .btn{
+        width: 80%;
+        margin-left: 0;
+    }
+}
+
+@media (min-width:550px){
+    .centerbtn{
+        text-align: center !important;
+    }
+
+    .btn{
+        width:100px
+    }
+    .secondbtn{
+        margin-left: 2%;
+    }
+    
+    .center{
+        margin-left: unset !important;
+    }
+}

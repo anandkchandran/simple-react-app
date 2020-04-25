@@ -4,7 +4,6 @@ import './display.style.css'
 
 export const DisplayText = (props)=>{
     var Tag="";
-    var error = ""
     //console.log(props)
 
     if(props.edit.edit){
